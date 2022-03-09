@@ -1,0 +1,12 @@
+#search{
+    height: 200px;
+}
+
+#weather-data {
+    height: 300px;
+}
+
+#history{
+    height: 60%;
+    box-sizing: border-box;
+}
