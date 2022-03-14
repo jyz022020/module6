@@ -90,7 +90,6 @@
         weatherResponse
         .then(response => response.json())
         .then(weatherData => {
-          console.log(weatherData);
           initialDataContent(content, weatherData);
         })
       }  
