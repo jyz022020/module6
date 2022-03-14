@@ -43,7 +43,9 @@
  }
 
  function initialDataContent(city, weatherData) {
-   $("#city-and-time").text(city + " ("+ moment().format("L") + ")");
+   var iconUrl = "https://openweathermap.org/img/wn/" + weatherData.current.weather[0].icon + "@2x.png";
+   $("#city-and-time").html(city + " ("+ moment().format("L") + ")");
+   $("#city-and-time").append('<img src="'+ iconUrl +'" alt="alternatetext">');
    $("#temp").text("Temp: "+weatherData.current.temp + "°F");
    $("#wind").text("Wind: "+ weatherData.current.wind_speed + " MPH");
    $("#humidity").text("Humidity: "+ weatherData.current.humidity + "%");
