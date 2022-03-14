@@ -58,6 +58,52 @@ header{
     
 }
 
-div {
-    
+#city-and-time {
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 24px;
 }
+
+.green-background{
+    background-color: greenyellow;
+}
+
+.red-background {
+    background-color: red;
+}
+
+.yellow-background {
+    background-color: yellow;
+}
+
+#uv-index {
+    display: none;
+}
+
+.data-row {
+    margin-bottom: 20px;
+}
+
+.visual-data {
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+#forcast {
+    color: white;
+}
+
+#visual {
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 24px;
+}
+
+.forcast-card {
+    background-color: navy;
+    height: 200px;
+    margin: 5px;
+    text-align: left;
+}
+

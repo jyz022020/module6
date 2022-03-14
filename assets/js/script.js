@@ -23,13 +23,39 @@
     searchLocation(content);
  });
 
- function initialDataContent(city, weatherData) {
-   $("#city-and-time").text(city + ": "+ moment().format("L"));
-   $("#temp").text("Temp: "+weatherData.current.temp);
-   $("#wind").text("Wind: "+ weatherData.current.wind_speed);
-   $("#humidity").text("Humidity: "+ weatherData.current.humidity);
-   $("#uv-index").text("UV Index: "+ weatherData.current.uvi);
+ function initialForcastData(weatherData) {
+   for (var i = 1; i<6; i++) {
+     var currCard = $("#forcast-" + i);
+     var currDate = moment().add(i, 'days').format("L");
+     var currWeather = weatherData.daily[i-1];
+     var iconUrl = "https://openweathermap.org/img/wn/" + currWeather.weather[0].icon + "@2x.png";
+     var temp = currWeather.temp.day + "°F";
+     var wind = currWeather.wind_speed + " MPH";
+     var humidity = currWeather.humidity + "%";
+     currCard.append("<span>" + currDate + "</span>");
+     currCard.append('<img src="'+ iconUrl +'" alt="alternatetext">');
+     currCard.append("<span> Temp: " + temp + "</span>"); 
+     currCard.append("<span> Wind:" + wind + "</span>"); 
+     currCard.append("<span> Humidity:" + humidity + "</span>"); 
+   }
+ }
 
+ function initialDataContent(city, weatherData) {
+   $("#city-and-time").text(city + " ("+ moment().format("L") + ")");
+   $("#temp").text("Temp: "+weatherData.current.temp + "°F");
+   $("#wind").text("Wind: "+ weatherData.current.wind_speed + " MPH");
+   $("#humidity").text("Humidity: "+ weatherData.current.humidity + "%");
+   var uvi = weatherData.current.uvi;
+   $("#uv").text(weatherData.current.uvi);
+   if (uvi <= 3) {
+      $("#uv").addClass("green-background");
+   } else if (uvi > 3 && uvi < 7) {
+      $("#uv").addClass("yellow-background");
+   } else {
+      $("#uv").addClass("red-background");
+   }
+   $("#uv-index").show();
+   initialForcastData(weatherData);
  }
 
  function searchLocation(content) {
