@@ -1,13 +1,15 @@
  var historyBox = $(".history-box");
  function initSearchRecord() {
    var histortyList = JSON.parse(localStorage.getItem("history"));
-   var reverseList = histortyList.reverse();
-   for (var i=0; i < reverseList.length; i++) {
-      if ( i > 10) {
-        break;
-      }
-      var history = $('<button class = "history btn btn-secondary btn-lg btn-block">' + reverseList[i] + '</button>');
-      historyBox.append(history);
+   if (histortyList) {
+    var reverseList = histortyList.reverse();
+    for (var i=0; i < reverseList.length; i++) {
+       if ( i > 10) {
+         break;
+       }
+       var history = $('<button class = "history btn btn-secondary btn-lg btn-block">' + reverseList[i] + '</button>');
+       historyBox.append(history);
+    }
    }
  }
 
@@ -20,7 +22,11 @@
  
  $("#search-button").click(function() {
     var content = $("#search-content").val();
-    searchLocation(content);
+    if (content === "") {
+      alert("please enter city name");
+    } else {
+      searchLocation(content);
+    }
  });
 
  function initialForcastData(weatherData) {
