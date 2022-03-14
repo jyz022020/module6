@@ -26,6 +26,7 @@
  function initialForcastData(weatherData) {
    for (var i = 1; i<6; i++) {
      var currCard = $("#forcast-" + i);
+     currCard.html("");
      var currDate = moment().add(i, 'days').format("L");
      var currWeather = weatherData.daily[i-1];
      var iconUrl = "https://openweathermap.org/img/wn/" + currWeather.weather[0].icon + "@2x.png";
