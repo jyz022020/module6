@@ -39,6 +39,7 @@
      currCard.append("<span> Wind:" + wind + "</span>"); 
      currCard.append("<span> Humidity:" + humidity + "</span>"); 
    }
+   $("#right-side").show();
  }
 
  function initialDataContent(city, weatherData) {
@@ -55,7 +56,6 @@
    } else {
       $("#uv").addClass("red-background");
    }
-   $("#uv-index").show();
    initialForcastData(weatherData);
  }
 
